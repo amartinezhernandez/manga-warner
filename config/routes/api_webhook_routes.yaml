@@ -1,0 +1,5 @@
+# Example
+example_context.rest.create_example.page:
+  path: /webhook
+  methods: POST
+  controller: 'App\WebhookContext\Infrastructure\Delivery\Rest\Webhook\SetWebhookPage'

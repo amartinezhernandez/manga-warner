@@ -16,9 +16,18 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\WebhookContext\Infrastructure\Delivery\Rest\:
+        autowire: true
+        autoconfigure: true
+        resource: '%kernel.project_dir%/src/WebhookContext/Infrastructure/Delivery/Rest'
+        tags: [ 'controller.service_arguments' ]
+
+    App\WebhookContext\Infrastructure\Telegram\Client\TelegramWebhookClient:
+        arguments:
+            $client: '@telegram.bot.client'
+            $botApiKey: '%env(BOT_API_KEY)%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
