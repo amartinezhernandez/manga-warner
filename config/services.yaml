@@ -24,10 +24,17 @@ services:
         resource: '%kernel.project_dir%/src/WebhookContext/Infrastructure/Delivery/Rest'
         tags: [ 'controller.service_arguments' ]
 
-    App\WebhookContext\Infrastructure\Telegram\Client\TelegramWebhookClient:
+    App\WebhookContext\Infrastructure\Client\Telegram\TelegramWebhookClient:
         arguments:
             $client: '@telegram.bot.client'
             $botApiKey: '%env(BOT_API_KEY)%'
+
+
+    _instanceof:
+        App\Shared\Application\Command\CommandHandler:
+            tags:
+                - { name: messenger.message_handler, bus: command.bus }
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

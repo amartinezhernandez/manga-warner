@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\WebhookContext\Infrastructure\Telegram\Client;
+namespace App\Shared\Infrastructure\Client\Telegram;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;

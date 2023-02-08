@@ -7,4 +7,4 @@ start: ## Start this project
 	. ${PWD}/.env.local && $(DOCKER_COMPOSE) up --remove-orphans
 .PHONY: bash
 bash: ## Launch PHP_SERVICE shell console
-	$(DOCKER_COMPOSE) exec ${PHP_SERVICE} sh
+	$(DOCKER_COMPOSE) exec ${PHP_SERVICE} bash
