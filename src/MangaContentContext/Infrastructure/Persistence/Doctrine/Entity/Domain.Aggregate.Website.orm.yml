@@ -1,0 +1,19 @@
+App\MangaContentContext\Domain\Aggregate\Website:
+  type: entity
+  table: website
+  schema: manga_content_context
+
+  id:
+    id:
+      type: aggregate_id
+      column: id
+      unique: true
+  fields:
+    name:
+      type: string
+      size: 255
+      column: name
+    feedUrl:
+      type: text
+      nullable: true
+      column: feed_url
