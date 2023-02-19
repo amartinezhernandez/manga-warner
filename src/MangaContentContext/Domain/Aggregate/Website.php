@@ -8,7 +8,8 @@ use App\Shared\Domain\Aggregate\AggregateRoot;
 use App\Shared\Domain\ValueObject\Uuid;
 
 final class Website extends AggregateRoot
-{public function __construct(
+{
+    public function __construct(
         private Uuid $id,
         private string $name,
         private ?string $feedUrl

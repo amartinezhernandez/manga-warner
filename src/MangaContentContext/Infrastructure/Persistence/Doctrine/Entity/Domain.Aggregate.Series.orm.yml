@@ -1,0 +1,23 @@
+App\MangaContentContext\Domain\Aggregate\Series:
+  type: entity
+  table: series
+  schema: manga_content_context
+
+  id:
+    id:
+      type: aggregate_id
+      column: id
+      unique: true
+  fields:
+    name:
+      type: string
+      size: 255
+      column: name
+    slug:
+      type: string
+      size: 255
+      column: slug
+    image:
+      type: text
+      nullable: true
+      column: image
