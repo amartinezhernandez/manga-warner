@@ -39,7 +39,7 @@ final class ScanWebsitesConsoleCommand extends Command
     {
         $websites = $this->websiteRepository->all();
         $allSeries = $this->seriesRepository->all();
-        unset($allSeries[0]);
+
         foreach ($websites as $website) {
             $feedItems = $this->feedService->scan($website);
 
