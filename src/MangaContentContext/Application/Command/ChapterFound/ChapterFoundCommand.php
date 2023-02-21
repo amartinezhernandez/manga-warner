@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\MangaContentContext\Application\Command\ChapterFound;
 
+use App\MangaContentContext\Domain\Aggregate\Series;
 use App\Shared\Application\Command\Command;
 use App\Shared\Domain\ValueObject\Uuid;
 
@@ -13,6 +14,7 @@ final class ChapterFoundCommand implements Command
         private readonly Uuid $seriesId,
         private readonly int $chapter,
         private readonly string $date,
+        private readonly string $url,
     ) {
     }
 
@@ -29,5 +31,10 @@ final class ChapterFoundCommand implements Command
     public function date(): string
     {
         return $this->date;
+    }
+
+    public function url(): string
+    {
+        return $this->url;
     }
 }

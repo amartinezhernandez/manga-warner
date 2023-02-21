@@ -28,7 +28,14 @@ services:
         arguments:
             $client: '@telegram.bot.client'
             $botApiKey: '%env(BOT_API_KEY)%'
+            $chatId: '%env(CHAT_ID)%'
 
+    App\MangaContentContext\Domain\Service\Client\SeriesMessagingMessagingClient:
+        class: App\MangaContentContext\Infrastructure\Domain\Service\Client\SeriesTelegramMessagingClient
+        arguments:
+            $client: '@telegram.bot.client'
+            $botApiKey: '%env(BOT_API_KEY)%'
+            $chatId: '%env(CHAT_ID)%'
 
     _instanceof:
         App\Shared\Application\Command\CommandHandler:

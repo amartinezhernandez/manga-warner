@@ -2,16 +2,31 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Infrastructure\Client\Telegram;
+namespace App\Shared\Infrastructure\Domain\Service\Client\Telegram;
 
+use App\Shared\Domain\Service\Client\MessagingClient;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
-abstract class TelegramClient
+class TelegramMessagingClient implements MessagingClient
 {
-    public function __construct(private readonly HttpClientInterface $client, private readonly string $botApiKey)
+    public function __construct(
+        protected readonly HttpClientInterface $client,
+        protected readonly string $botApiKey,
+        protected readonly string $chatId,
+    ) {
+    }
+
+    public function sendMessage(string $message): bool
     {
+        $response = $this->sendRequest('/sendMessage', 'GET', [
+            'chat_id' => $this->chatId,
+            'text' => $message,
+            'parse_mode' => 'markdown'
+        ]);
+
+        return $this->isSuccessful($response);
     }
 
     protected function sendRequest(string $url, string $method, ?array $query = null, ?array $body = null): ResponseInterface

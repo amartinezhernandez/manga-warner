@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\MangaContentContext\Domain\Aggregate;
 
+use App\Shared\Domain\Aggregate\AggregateRoot;
 use App\Shared\Domain\ValueObject\Uuid;
 
-final class Series
+final class Series extends AggregateRoot
 {
     public function __construct(
         private readonly Uuid $id,
@@ -34,5 +35,17 @@ final class Series
     public function image(): string
     {
         return $this->image;
+    }
+
+    public function __toString(): string
+    {
+        return $this->id()->id();
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id()->id(),
+        ];
     }
 }
