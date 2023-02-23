@@ -12,8 +12,12 @@ framework:
             App\Shared\Application\Command\Command: commands
 
         buses:
-            command.bus: ~
-
+            command.bus:
+                middleware:
+                    - 'doctrine_ping_connection'
+                    - 'doctrine_close_connection'
+                    - 'send_message'
+                    - 'doctrine_transaction'
 
 # when@test:
 #    framework:
