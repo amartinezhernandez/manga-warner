@@ -36,7 +36,7 @@ final class RssFeedService
     private function findChapter(string $title): int
     {
         $mod = strstr(strtolower($title), 'chapter ');
-        $chapter = 0;
+        $chapter = null;
 
         if (false !== $mod) {
             $data = substr($mod, strlen('chapter '));
@@ -44,6 +44,10 @@ final class RssFeedService
             $chapter = reset($chapter);
         }
 
+        if (null === $chapter) {
+            $explodedTitle = explode(' ', $title);
+            $chapter = end($explodedTitle);
+        }
 
         return (int) $chapter;
     }
