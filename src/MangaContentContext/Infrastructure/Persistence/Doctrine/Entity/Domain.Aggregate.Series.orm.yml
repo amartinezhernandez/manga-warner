@@ -17,3 +17,7 @@ App\MangaContentContext\Domain\Aggregate\Series:
       type: string
       size: 255
       column: slug
+    lastChapter:
+      type: integer
+      column: last_chapter
+      nullable: true

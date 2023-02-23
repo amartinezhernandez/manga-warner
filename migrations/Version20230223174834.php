@@ -14,8 +14,9 @@ final class Version20230223174834 extends AbstractMigration
     }
     public function up(Schema $schema): void
     {
-        $this->addSql('CREATE TABLE manga_content_context.subscription (id UUID NOT NULL, series_id VARCHAR(255) NOT NULL, chat_id TEXT DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE manga_content_context.subscription (id UUID NOT NULL, series_id UUID NOT NULL, chat_id TEXT DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('COMMENT ON COLUMN manga_content_context.subscription.id IS \'(DC2Type:aggregate_id)\'');
+        $this->addSql('COMMENT ON COLUMN manga_content_context.subscription.series_id IS \'(DC2Type:aggregate_id)\'');
         $this->addSql('ALTER TABLE manga_content_context.series DROP image');
     }
 

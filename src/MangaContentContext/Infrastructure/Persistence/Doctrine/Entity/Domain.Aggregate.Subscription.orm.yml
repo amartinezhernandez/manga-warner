@@ -10,7 +10,7 @@ App\MangaContentContext\Domain\Aggregate\Subscription:
       unique: true
   fields:
     seriesId:
-      type: string
+      type: aggregate_id
       size: 255
       column: series_id
     chatId:
