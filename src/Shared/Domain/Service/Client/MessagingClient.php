@@ -6,5 +6,5 @@ namespace App\Shared\Domain\Service\Client;
 
 interface MessagingClient
 {
-    public function sendMessage(string $message): bool;
+    public function sendMessage(string $message, string $chatId): bool;
 }

@@ -13,7 +13,7 @@ final class Series extends AggregateRoot
         private readonly Uuid $id,
         private readonly string $name,
         private readonly string $slug,
-        private readonly string $image,
+        private ?int $lastChapter,
     ) {
     }
 
@@ -32,9 +32,14 @@ final class Series extends AggregateRoot
         return $this->slug;
     }
 
-    public function image(): string
+    public function lastChapter(): ?int
     {
-        return $this->image;
+        return $this->lastChapter;
+    }
+
+    public function updateLastChapter(int $chapter): void
+    {
+        $this->lastChapter = $chapter;
     }
 
     public function __toString(): string

@@ -14,14 +14,13 @@ class TelegramMessagingClient implements MessagingClient
     public function __construct(
         protected readonly HttpClientInterface $client,
         protected readonly string $botApiKey,
-        protected readonly string $chatId,
     ) {
     }
 
-    public function sendMessage(string $message): bool
+    public function sendMessage(string $message, string $chatId): bool
     {
         $response = $this->sendRequest('/sendMessage', 'GET', [
-            'chat_id' => $this->chatId,
+            'chat_id' => $chatId,
             'text' => $message,
             'parse_mode' => 'markdown'
         ]);

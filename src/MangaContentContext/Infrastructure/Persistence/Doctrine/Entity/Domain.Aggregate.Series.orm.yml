@@ -17,7 +17,3 @@ App\MangaContentContext\Domain\Aggregate\Series:
       type: string
       size: 255
       column: slug
-    image:
-      type: text
-      nullable: true
-      column: image

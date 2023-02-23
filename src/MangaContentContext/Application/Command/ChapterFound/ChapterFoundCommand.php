@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\MangaContentContext\Application\Command\ChapterFound;
 
-use App\MangaContentContext\Domain\Aggregate\Series;
 use App\Shared\Application\Command\Command;
 use App\Shared\Domain\ValueObject\Uuid;
 

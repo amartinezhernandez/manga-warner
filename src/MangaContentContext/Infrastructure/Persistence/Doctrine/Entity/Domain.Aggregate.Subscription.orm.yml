@@ -1,0 +1,19 @@
+App\MangaContentContext\Domain\Aggregate\Subscription:
+  type: entity
+  table: subscription
+  schema: manga_content_context
+
+  id:
+    id:
+      type: aggregate_id
+      column: id
+      unique: true
+  fields:
+    seriesId:
+      type: string
+      size: 255
+      column: series_id
+    chatId:
+      type: text
+      nullable: true
+      column: chat_id
